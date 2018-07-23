@@ -12,13 +12,14 @@
     <script src="https://cdn.bootcss.com/three.js/92/three.js"></script>
 		<script>
 			// Our Javascript will go here.
-      var scene = new THREE.Scene();
-      var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+      var scene = new THREE.Scene(); // 场景
+      var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );  // 透视相机
 
-      var renderer = new THREE.WebGLRenderer();
-      renderer.setSize( window.innerWidth, window.innerHeight );
-      document.body.appendChild( renderer.domElement );
+      var renderer = new THREE.WebGLRenderer();  // 渲染器
+      renderer.setSize( window.innerWidth, window.innerHeight );  // 渲染
+      document.body.appendChild( renderer.domElement );  // 渲染
 
+      // 添加物体到场景中
       var geometry = new THREE.BoxGeometry( 1, 1, 1 );
       var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
       var cube = new THREE.Mesh( geometry, material );
@@ -26,8 +27,9 @@
 
       camera.position.z = 5;
 
+      // 渲染：实时渲染，渲染循环
       function render() {
-      	requestAnimationFrame( render );
+      	requestAnimationFrame( render );  // 让浏览器去执行一次参数中的函数
         cube.rotation.x += 0.1;
         cube.rotation.y += 0.1;
       	renderer.render( scene, camera );
